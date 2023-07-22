@@ -1,7 +1,24 @@
 Chronic_Kidney_Diseases_Prediction
 ==============================
 
-Machine Learning Project
+
+### Create a Enviroment
+
+```
+conda create -p venv python=3.8
+
+conda activate \venv
+```
+
+### Install all necessary libraries
+```
+pip  install -r requirments.txt
+```
+
+### run the flask application
+```
+python app.py
+```
 
 Project Organization
 ------------
@@ -54,4 +71,3 @@ Project Organization
 
 --------
 
-<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
