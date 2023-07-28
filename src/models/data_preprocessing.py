@@ -17,7 +17,7 @@ def Data_Preprocessing():
 
     logging.info("Data preprocessing started...")
 
-    #load the train and test data sets
+    #load the dataset
     df = pd.read_csv(os.path.join('data_files/raw','kidney_disease.csv'))
 
     #perform simplerImputer 
