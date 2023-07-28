@@ -18,7 +18,7 @@ def Data_Preprocessing():
     logging.info("Data preprocessing started...")
 
     #load the train and test data sets
-    df = pd.read_csv(os.path.join('data/raw','kidney_disease.csv'))
+    df = pd.read_csv(os.path.join('data_files/raw','kidney_disease.csv'))
 
     #perform simplerImputer 
     imp_mode = SimpleImputer(missing_values = np.nan,strategy = 'most_frequent')

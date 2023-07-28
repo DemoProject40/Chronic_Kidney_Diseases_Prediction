@@ -18,7 +18,7 @@ def Data_Preprocessing():
     logging.info("Data Ingestion started...")
 
     #Load the data 
-    df=pd.read_csv(os.path.join('data/raw','kidney_disease.csv'))
+    df=pd.read_csv(os.path.join('data_files/raw','kidney_disease.csv'))
 
     logging.info("Train test split sucessfull..")
     #Split the data into train and test sets
