@@ -7,5 +7,4 @@ numpy
 seaborn
 matplotlib
 ipykernel
-sklearn
 scikit-learn
