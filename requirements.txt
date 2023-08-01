@@ -6,6 +6,5 @@ pandas
 numpy
 seaborn
 matplotlib
-ipykernel
 scikit-learn
 flask
