@@ -1,5 +1,9 @@
-Chronic_Kidney_Diseases_Prediction
-==============================
+
+# Chronic Kidney Disease Prediction Project ❤
+
+#### If you want to view the deployed model, click on the following link:
+
+• https://chronickidney01.azurewebsites.net/
 
 
 ### Create a Enviroment
@@ -15,9 +19,12 @@ conda activate \venv
 pip  install -r requirments.txt
 ```
 
-### run the flask application
-```
-python app.py
+## Running Tests
+
+To run app, run the following command
+
+```bash
+  python app.run
 ```
 
 Project Organization
@@ -69,5 +76,65 @@ Project Organization
     └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
 
 
+
+
+## Dataset
+
+[Chronic Kidney Disease Dataset](https://www.kaggle.com/datasets/mansoordaku/ckdisease?select=kidney_disease.csv)
+
+## Dataset Description
+
+[Download Description](https://www.kaggle.com/datasets/mansoordaku/ckdisease)
+
+
+## Tech Stack
+
+- Python
+- Machine Learning
+- Pandas
+- Numpy
+- Scikit-learn
+- Flask
+- HTML
+- CSS
+- VScode
+- Azure
 --------
 
+## Screenshots
+
+![App Screenshot](https:///Chronic-Kidney-Disease-Prediction-Project/main/Images/screenshot.png)
+
+## Deployment
+
+To deploy this project run following command in the project folder
+
+```bash
+  git bash open
+```
+
+Create .git file
+```bash
+  git init
+```
+Track all the files
+```bash
+  git add .
+```
+Cheacking file track or not
+```bash
+  git status
+```
+Store as separate version
+```bash
+  git commit -m 'message'
+```
+
+## Feedback
+
+If you have any feedback, please reach out to me at https://www.linkedin.com/in/indra-k-59223614a/
+
+Please do ⭐ the repository, if you like this 😊
+
+
+Thank you ❤
