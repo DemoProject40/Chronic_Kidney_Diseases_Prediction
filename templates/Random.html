@@ -4,44 +4,56 @@
     <title>Disease Prediction</title>
 </head>
 <style>
+/* Form and result css part*/
     
     * {
   box-sizing: border-box;
 }
-
+    
+.result{
+    margin: auto;
+    width: 35%;
+    padding: 10px;
+    top: 180px;
+    position: absolute;
+    right: 20px; 
+    border: 1px solid black;
+}
 div{
-        font-size:24px;
+        font-size:18px;
 }   
         
 form {
     margin: auto;
     width: 50%;
     border-color: transparent;
+    
 }
-    .r1{
-    color: firebrick;
-    }
+.r1{
+    color: white;
+}
 
 body{
-  background-image: url("/static/styles/AJGP-07-2021-Focus-Titus-SARS-CoV-2-Kidney-Feature.jpg");
+  background-image: rgb(156, 39, 39);
+  background-color: darkorange; 
   background-size: 100% 100%;
-  height: 300px;
-  background-size: cover;
+  height: 600px;
+  background-size:auto;
 }
-
 .input {
   width: 100%;
   padding: 3px;
   border-radius: 40px;
   resize: vertical;
-    background-color: transparent;
-    color: rgb(231, 219, 219);
+  background-color: transparent;
+  color:whitesmoke;
 }
 
 
 label {
-  padding:  4px 8px 0;
+  padding:  2px 4px 0;
   display: inline-block;
+  color:white;
 }
 
 input[type=submit] {
@@ -54,24 +66,35 @@ input[type=submit] {
   float: right;
 }
 
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+#1{
+        position: relative;
+        height: auto;
+}
+ 
 
-.header{
+.container {
+    padding: 8px;
+    left: 0; 
+    position: absolute; 
+    width: 60%;
+    top: 160px;
+    
+    
+}
+    .header{
         float: right;
-        text-align:center;
     }
-
 .col-25 {
   float: left;
   width: 55%;
   padding-left:03px;
   margin-top: 3px;
   font-size: 16px;
-  color: rgb(12, 97, 194),
 }
 
-.bold-text {
-      font-weight: bold;
-        }
 .col-75 {
   float: right;
   width: 45%;
@@ -86,10 +109,17 @@ input[type=submit] {
   clear: both;
 }
    
-.container {
-      text-align: center;
-        }
 
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+
+/* Navigation part css of the page*/    
 
 .active {
   text-decoration: underline;
@@ -111,15 +141,60 @@ input[type=submit] {
         font-family: cursive;
     }
 
+    #prediction{
+        float: right;
+        padding: 25px;
+        font-size: 20px;
+        font-family: cursive;
+    }
+
+    #about1{
+        float: right;
+        padding: 25px;
+        font-size: 20px;
+        font-family: cursive;
+    }
+/* About Part css */    
+
+#about{
+    position:relative;
+    top: 650px;
+    }    
+    #topb{
+        float: right;
+        margin-left: 1220px;
+        padding: 18px;
+        border-radius: 8px;
+        position: relative;
+        display: block;
+}    
+
+    
 </style>
     
 <body>   
-  <header class="container">
-    <h1 >Dieseases Prediction By ML</h1>
-  </header>
-  
+<! –– Navigation part of the page -->    
+    
+<div id="nav">
+  <span id="about1"><a href="#about" target="_self">About</a></span>
+  <span id="prediction"><a href="#1" target="_self">Prediction</a></span>
+  <span id="home"><a class="active" href="" target="_self">Home</a></span>
+</div>  
+    
+<! –– Picture part of the page -->      
+        
+<div id ="pict">
+<h2 align="center">Chronic Kidney Disease Predictor</h2>
+    
+</div>
+    
+    
+<! –– Prediction part of the page -->     
+    
+<div id="1">   
+<div class="container">   
    
-<form class="form" action="{{ url_for('predict') }}" method="POST" >
+<form action="{{ url_for('Random') }}" method="POST" >
     <fieldset class="fd">
         <legend>Input values:</legend>
         
@@ -244,15 +319,62 @@ input[type=submit] {
     </div>
   </div>
         <br>
-        <input type="submit" value="submit">
+        <input type="submit" value="submit" onclick="myFunction()">
     
         </fieldset> 
     </form>
-    {{Prediction}}
 </div>
-</div>
-</div>
+<div class="result" align="center">
+    <div class="r1">
+    <h3>Original Input:</h3>
+    {% if result == 1%}
+    {% for variable, value in original_input.items() %}
+    <b>{{ variable }}</b> : {{ value }}
+    {% endfor %}
+    <br>
+    <br>
+    <h2>Predicted:</h2>
+	<h2 style="color:red;">CKD</h2>
+    <p id="demo">
+     {% if demo%}
+        {% for variable in demo %}
+        <b>{{ variable }}</b><br>
+        {%endfor%}
+    {%endif%}
+    </p>
+    <span style='font-size:100px;'>&#128549;</span>
+	{% elif result == 0%}
+    {% for variable, value in original_input.items() %}
+    <b>{{ variable }}</b> : {{ value }}
+    {% endfor %}
+        <br>
+        <br>
+    <h3>Prediction:</h3>
+	<h2 style="color:blue;">Not CKD</h2>
+    <p id="demo">
+    {% if demo%}
+        {% for variable in demo %}
+        <b>{{ variable }}</b><br>
+        {%endfor%}
+        {%if demo[1] > 90 %}
+        <span style='font-size:100px;'>&#128522;</span> 
+        {%else%}
+        <span style='font-size:100px;'>&#128549;</span>
+        {%endif%}
+    {%endif%}
+    </p>
+    
+	{% endif %}
+    </div>
+   </div>
 </div>
 
+    
+<! –– About part of the page -->  
+    
+<div id="about">
+    <button id="topb" ><a href="#home" style="color: white">&#9757</a></button>
+</div>      
+    
 </body>
 </html>
